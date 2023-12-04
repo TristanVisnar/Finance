@@ -1,0 +1,13 @@
+greeting:
+  message: "hello"
+# configure your datasource
+quarkus:
+  datasource:
+    db-kind=postgresql
+    username=finance
+    password=finance
+    jdbc.url=jdbc:postgresql://localhost:5432/finance-main
+
+  # Run Flyway migrations automatically
+  flyway:
+    migrate-at-start=true
