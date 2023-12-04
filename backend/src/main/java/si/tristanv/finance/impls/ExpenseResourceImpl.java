@@ -2,7 +2,7 @@ package si.tristanv.finance.impls;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import si.tristanv.finance.dtos.ExpenseDto;
-import si.tristanv.finance.resources.ExpenseResource;
+import si.tristanv.finance.api.resources.ExpenseResource;
 
 @ApplicationScoped
 public class ExpenseResourceImpl implements ExpenseResource

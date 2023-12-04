@@ -1,4 +1,4 @@
-package si.tristanv.finance.resources;
+package si.tristanv.finance.api.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
