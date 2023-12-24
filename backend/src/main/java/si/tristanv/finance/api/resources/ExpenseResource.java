@@ -5,6 +5,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import si.tristanv.finance.api.objects.expense.AddExpenseRequest;
+import si.tristanv.finance.dtos.ExpenseDto;
 
 @Path("/expense")
 public interface ExpenseResource
@@ -12,7 +13,7 @@ public interface ExpenseResource
     @POST
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
-    public Integer addExpense(AddExpenseRequest addExpenseRequest);
+    ExpenseDto addExpense(AddExpenseRequest addExpenseRequest);
 
 
 
