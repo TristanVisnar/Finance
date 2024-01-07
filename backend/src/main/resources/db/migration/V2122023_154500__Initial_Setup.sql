@@ -1,5 +1,5 @@
 CREATE TABLE accounts (
-	accounts_id serial PRIMARY KEY,
+	account_id serial PRIMARY KEY,
 	username VARCHAR ( 50 ) UNIQUE NOT NULL,
 	password VARCHAR ( 50 ) NOT NULL,
 	email VARCHAR ( 255 ) UNIQUE NOT NULL,
@@ -7,32 +7,44 @@ CREATE TABLE accounts (
     last_login TIMESTAMP
 );
 
+CREATE TABLE finance_groups(
+    finance_group_id serial PRIMARY KEY,
+    name VARCHAR (50) NOT NULL
+);
+
+CREATE TABLE accounts_finance_groups
+(
+    account_id int NOT NULL,
+    finance_group_id int NOT NULL,
+    FOREIGN KEY (account_id)
+      REFERENCES accounts (account_id),
+    FOREIGN KEY (finance_group_id)
+      REFERENCES finance_groups (finance_group_id)
+);
 
 CREATE TABLE categories (
-    categories_id serial PRIMARY KEY,
+    category_id serial PRIMARY KEY,
     name VARCHAR(50),
     description VARCHAR
 );
 
-
 CREATE TABLE subcategories (
-    subcategories_id serial PRIMARY KEY,
+    subcategory_id serial PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     description VARCHAR,
-    categories_id int NOT NULL,
-    FOREIGN KEY (categories_id)
-          REFERENCES categories (categories_id)
+    category_id int NOT NULL,
+    FOREIGN KEY (category_id)
+          REFERENCES categories (category_id)
 );
 
-
-CREATE TABLE expense(
+CREATE TABLE expenses(
     expense_id serial PRIMARY KEY,
     expense_time TIMESTAMP NOT NULL,
     cost int NOT NULL,
-    subcategories_id int NOT NULL,
-    accounts_id int NOT NULL,
-    FOREIGN KEY (subcategories_id)
-      REFERENCES subcategories (subcategories_id),
-    FOREIGN KEY (accounts_id)
-      REFERENCES accounts (accounts_id)
+    subcategory_id int NOT NULL,
+    finance_group_id int NOT NULL,
+    FOREIGN KEY (subcategory_id)
+      REFERENCES subcategories (subcategory_id),
+    FOREIGN KEY (finance_group_id)
+      REFERENCES finance_groups (finance_group_id)
 );
